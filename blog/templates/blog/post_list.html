@@ -1,0 +1,20 @@
+{% extends "blog/base.html" %}
+<body>   
+{% block titulo %} Blog UNIDESC {% endblock %}
+
+{% block content %}
+    {% for post in post_list %}
+        <article>
+            <h2>
+                <a href = "{{ post.get_absolute_url }}">
+                     {{ post.titulo }}
+                </a>
+            </h2>
+            <p class = "date" >
+                Publicado em {{post.criado}} por {{post.autor}}
+            </p>
+            {{post.resenha | linebreaks|truncatewords:10}}
+    
+        </article>
+    {% endfor %}
+{% endblock %}
